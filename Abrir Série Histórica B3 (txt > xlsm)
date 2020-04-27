@@ -1,0 +1,21 @@
+Sub ImportData()
+
+    Dim FilePath As Variant
+    
+    FilePath = Application.GetOpenFilename _
+    (FileFilter:="Text Document (*.txt),*.txt", Title:="Selecionar Série Histórica")
+
+    If FilePath = False Then
+    MsgBox "Importação cancelada."
+    Exit Sub
+    End If
+    
+    Workbooks.OpenText Filename:=FilePath, _
+    Origin:=xlWindows, StartRow:=2, DataType:=xlFixedWidth, FieldInfo:= _
+    Array(Array(0, 1), Array(2, 1), Array(10, 1), Array(12, 1), Array(24, 1), Array(27, 1), _
+    Array(39, 1), Array(49, 1), Array(52, 1), Array(56, 1), Array(69, 1), Array(82, 1), _
+    Array(95, 1), Array(108, 1), Array(121, 1), Array(134, 1), Array(147, 1), Array(152, 1), _
+    Array(170, 1), Array(188, 1), Array(201, 1), Array(202, 1), Array(210, 1), Array(217, 1), _
+    Array(230, 1), Array(242, 1), Array(245, 1)), TrailingMinusNumbers:=True
+    
+    End sub
